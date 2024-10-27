@@ -1,0 +1,43 @@
+2018-2022 American Community Survey: Migration Flows
+
+Migration flows are derived from the relationship between the location of current residence in the American Community Survey (ACS) sample and the responses given to the migration question "Where did you live 1 year ago?". There are flow statistics between state or world region of residence 1 year ago and current county of residence. In addition to the flow estimates, there are supplemental statistics files that contain migration/geographical mobility estimates (e.g. nonmovers, moved to a different state, moved from abroad) for each current residence county.
+
+FULL1_NAME	Full name of reference geography
+FULL2_NAME	Full name of second geography
+
+GEOID1	Combined codes for the reference geography
+GEOID2	Combined codes for the second geography
+MOVEDIN Total inbound migration
+
+https://api.census.gov/data/2022/acs/flows?get=FULL1_NAME,FULL2_NAME,GEOID1,GEOID2,MOVEDIN&for=county:*&in=state:*&key=YOUR_KEY_GOES_HERE
+
+Predicate
+for = county
+in = state
+
+The predicate &for restricts the variables by geography at various levels,
+while &in and %20 restricts to geographic areas smaller than state level.
+
+You can include wildcards (*) along with &for and &in.
+
+Examples to get results for a single geography:
+----------------------------------------------
+- &for=state:01 – restricts the result to include only Alabama
+
+- &for=county:001&in=state:01 – restricts the result to include only Autauga County, Alabama
+
+- &for=county%20(or%20part):073&in=state:01%20place:07000 – restricts the
+result to include the portion of Jefferson County (county:073), Alabama that is
+within Birmingham city (place:07000)
+
+Examples to get results for multiple geographies:
+----------------------------------------------
+- &for=state:01,13 – retrieves the result for Alabama and Georgia
+
+- &for=state:* – retrieves the result for all states
+
+- &for=county:*&in=state:01 – restricts the result to include all counties in
+Alabama
+
+- &for=county%20(or%20part):*&in=state:01%20place:62328 – restricts the result
+to include all counties within Prattville city (place: 62328), Alabama
