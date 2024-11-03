@@ -1,5 +1,5 @@
 module censusapi
-using HTTP, JSON3, ExpandNestedData
+using HTTP
 using DataFrames, AnalysisUtils, CSV, Missings
 export getcensus, flowdf
 
